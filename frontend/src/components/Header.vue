@@ -62,7 +62,7 @@
                 <router-link to="/" class="nav-link me-md-4">Exam</router-link>
               </li>
               <li class="nav-item">
-                <router-link to="/" class="nav-link me-md-4">Teachers</router-link>
+                <router-link to="/teachers" class="nav-link me-md-4">Teachers</router-link>
               </li>
               <li class="nav-item">
                 <router-link to="/books" class="nav-link me-md-4" >Books</router-link>
