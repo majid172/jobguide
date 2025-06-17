@@ -72,7 +72,7 @@
                   aria-expanded="false">Others</a>
                 <ul class="dropdown-menu dropdown-menu-dark">
                    <li>
-                    <router-link to="/" class="dropdown-item">About</router-link>
+                    <router-link to="/about" class="dropdown-item">About</router-link>
                   </li>
 
                   <li><router-link to="/" class="dropdown-item">Blog</router-link>
@@ -80,7 +80,7 @@
                   <li><router-link to="/" class="dropdown-item">Privacy & Policy </router-link></li>
                   <li><RouterLink to="/" class="dropdown-item">Terms & Conditions</RouterLink></li>
 
-                  <li><router-link to="/" class="dropdown-item">Contact</router-link></li>
+                  <li><router-link to="/contact" class="dropdown-item">Contact</router-link></li>
 
                 </ul>
               </li>
