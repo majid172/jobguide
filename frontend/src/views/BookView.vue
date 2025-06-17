@@ -10,7 +10,7 @@ onMounted(() => {
     <section id="about-us">
         <div class="container">
             <div class="row py-lg-5">
-                <h2 class="text-capitalize text-center m-0 py-lg-5">Books</h2>
+                <h3 class="text-capitalize text-start m-0 py-lg-5">All Books </h3>
 
                 <div class="row">
                     <div class="col-lg-4 col-md-6 mb-4" v-for="book in bookStore.books" :key="book.id">

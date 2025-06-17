@@ -74,13 +74,13 @@
                    <li>
                     <router-link to="/about" class="dropdown-item">About</router-link>
                   </li>
-
-                  <li><router-link to="/" class="dropdown-item">Blog</router-link>
-                  </li>
-                  <li><router-link to="/" class="dropdown-item">Privacy & Policy </router-link></li>
-                  <li><RouterLink to="/" class="dropdown-item">Terms & Conditions</RouterLink></li>
-
                   <li><router-link to="/contact" class="dropdown-item">Contact</router-link></li>
+
+                  <li><router-link to="/mission-vision" class="dropdown-item">Mission & Vision</router-link>
+                  </li>
+                  <li><router-link to="/privacy-policy" class="dropdown-item">Privacy & Policy </router-link></li>
+                  <li><RouterLink to="/terms-condition" class="dropdown-item">Terms & Conditions</RouterLink></li>
+
 
                 </ul>
               </li>

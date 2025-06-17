@@ -6,6 +6,7 @@ use App\Http\Controllers\api\v1\CategoryController;
 use App\Http\Controllers\api\v1\CompanyInfoController;
 use App\Http\Controllers\api\v1\CourseController;
 use App\Http\Controllers\api\v1\NoticeController;
+use App\Http\Controllers\api\v1\PrivacyController;
 use App\Http\Controllers\api\v1\TeacherController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -22,4 +23,5 @@ Route::prefix('v1')->group(function () {
     Route::get('teachers', [TeacherController::class, 'index']);
     Route::get('books', [BookController::class, 'books']);
     Route::get('notice', [NoticeController::class, 'notice']);
+    Route::get('privacy-policy', [PrivacyController::class, 'privacy']);
 });
