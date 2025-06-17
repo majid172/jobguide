@@ -65,7 +65,7 @@
                 <router-link to="/" class="nav-link me-md-4">Teachers</router-link>
               </li>
               <li class="nav-item">
-                <router-link to="/" class="nav-link me-md-4" >Books</router-link>
+                <router-link to="/books" class="nav-link me-md-4" >Books</router-link>
               </li>
               <li class="nav-item dropdown ">
                 <a class="nav-link me-md-4 text-center dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
