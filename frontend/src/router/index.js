@@ -6,6 +6,7 @@ import BookView from '@/views/BookView.vue';
 import PrivacyView from '@/views/PrivacyView.vue';
 import TermsConditionView from '@/views/TermsConditionView.vue';
 import MissionView from '@/views/MissionView.vue';
+import DashboardView from '@/views/users/DashboardView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -53,7 +54,27 @@ const router = createRouter({
       name: 'mission_vision',
       component: MissionView
     },
+
+    // auth users
+    {
+      path: "/dashboard",
+      name: "dashboard",
+      component: DashboardView,
+      meta: { requiresAuth: true },
+    },
   ],
 })
+
+
+router.beforeEach((to, from, next) => {
+  const isAuthenticated = !!localStorage.getItem('token');
+
+  if (to.meta.requiresAuth && !isAuthenticated) {
+    
+    next({ path: '/' });
+  } else {
+    next();
+  }
+});
 
 export default router

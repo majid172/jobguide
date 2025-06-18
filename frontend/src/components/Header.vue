@@ -1,12 +1,16 @@
 <script setup>
   import logo from '@/assets/images/logo.png'
+import { useLoginStore } from '@/stores/auth/login';
   import {useHeaderStore} from "@/stores/header.js";
   import {onMounted} from "vue";
 
   const headerStore = useHeaderStore();
+  const loginStore = useLoginStore();
+
   onMounted(()=>{
     headerStore.getCategory();
     headerStore.getCourse();
+    loginStore.loadUserFromStorage();
   });
 </script>
 <template>
@@ -37,7 +41,7 @@
                 <router-link to="/" class="nav-link active me-md-4" >Home</router-link>
               </li>
               <li class="nav-item dropdown ">
-                <a class="nav-link me-md-4 text-center dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                <a class="nav-link me-md-4 text-center dropdown-toggle" data-bs-toggle="dropdown" href="javascript:void(0)" role="button"
                   aria-expanded="false">Categories</a>
                 <ul class="dropdown-menu dropdown-menu-dark">
                    <li v-for="item in headerStore.categories">
@@ -48,7 +52,7 @@
                 </ul>
               </li>
               <li class="nav-item dropdown ">
-                <a class="nav-link me-md-4 text-center dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                <a class="nav-link me-md-4 text-center dropdown-toggle" data-bs-toggle="dropdown" href="javascript:void(0)" role="button"
                   aria-expanded="false">Courses</a>
                 <ul class="dropdown-menu dropdown-menu-dark">
                    <li v-for="course in headerStore.course">
@@ -84,8 +88,9 @@
 
                 </ul>
               </li>
-              <li class="nav-item">
-                <a class="nav-link mx-md-4" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">Login</a>
+<template v-if="!loginStore.credentials?.user">
+              <li class="nav-item" >
+                <a class="nav-link mx-md-4" href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#exampleModal">Sign In</a>
               </li>
 
               <!-- Modal -->
@@ -111,18 +116,18 @@
                         <div class="tab-content" id="nav-tabContent">
                           <div class="tab-pane fade active show" id="nav-sign-in" role="tabpanel"
                             aria-labelledby="nav-sign-in-tab">
-                            <form id="form1" class="form-group flex-wrap p-3 ">
+                            <form id="form1" class="form-group flex-wrap p-3" @submit.prevent="loginStore.login">
                               <div class="form-input col-lg-12 my-4">
                                 <label for="exampleInputEmail1"
                                   class="form-label fs-6 text-uppercase fw-bold text-black">Email
                                   Address</label>
-                                <input type="text" id="exampleInputEmail1" name="email" placeholder="Email"
+                                <input type="text" id="exampleInputEmail1" v-model="loginStore.inputField.email" placeholder="Email"
                                   class="form-control ps-3">
                               </div>
                               <div class="form-input col-lg-12 my-4">
                                 <label for="inputPassword1"
                                   class="form-label  fs-6 text-uppercase fw-bold text-black">Password</label>
-                                <input type="password" id="inputPassword1" placeholder="Password"
+                                <input type="password" id="inputPassword1" v-model="loginStore.inputField.password" placeholder="Password"
                                   class="form-control ps-3" aria-describedby="passwordHelpBlock">
                                 <div id="passwordHelpBlock" class="form-text text-center">
                                   <a href="#" class=" password">Forgot Password ?</a>
@@ -176,8 +181,8 @@
               </div>
 
 
-              <li class="nav-item">
-                <a class="btn-medium btn btn-primary" href="#" data-bs-toggle="modal"
+              <li class="nav-item" >
+                <a class="btn-medium btn btn-primary" href="javascript:void(0)" data-bs-toggle="modal"
                   data-bs-target="#exampleModal2">Sign Up</a>
               </li>
               <!-- Modal -->
@@ -266,6 +271,22 @@
                   </div>
                 </div>
               </div>
+              </template>
+
+
+
+<template v-else>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle text-capitalize" href="#" data-bs-toggle="dropdown">
+                    {{ loginStore.credentials.user.name }}
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-dark">
+                    <li><router-link to="/dashboard" class="dropdown-item">Dashboard</router-link></li>
+                    <li><a href="#" class="dropdown-item" @click="loginStore.logout">Logout</a></li>
+                  </ul>
+                </li>
+              </template>
+              
             </ul>
 
           </div>
