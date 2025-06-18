@@ -27,7 +27,7 @@ class CategoryController extends Controller
         //                 ->get();
 
         // return $categories;
-        return Category::select('id','name')->active()->get();
+        return Category::with('subcategory')->active()->get();
         // return response()->json(['status'=>200,'categories'=>$categories]);
 
     }

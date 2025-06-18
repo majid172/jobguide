@@ -11,7 +11,7 @@ class SubCategory extends Model
     {
         return $this->belongsTo(Category::class);
     }
-    public function subject()
+    public function subjects()
     {
         return $this->hasMany(Subject::class,'sub_cat_id');
     }

@@ -7,6 +7,8 @@ import PrivacyView from '@/views/PrivacyView.vue';
 import TermsConditionView from '@/views/TermsConditionView.vue';
 import MissionView from '@/views/MissionView.vue';
 import DashboardView from '@/views/users/DashboardView.vue';
+import SubCategoryView from '@/views/users/SubCategoryView.vue';
+import ExamView from '@/views/users/ExamView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -62,6 +64,18 @@ const router = createRouter({
       component: DashboardView,
       meta: { requiresAuth: true },
     },
+    {
+      path: "/subcategories/:id",
+      name: "subcategories",
+      component: SubCategoryView,
+      meta: { requiresAuth: true },
+    },
+    {
+      path: "/exams",
+      name: "exams",
+      component: ExamView,
+      meta: { requiresAuth: true },
+    },
   ],
 })
 
@@ -70,7 +84,7 @@ router.beforeEach((to, from, next) => {
   const isAuthenticated = !!localStorage.getItem('token');
 
   if (to.meta.requiresAuth && !isAuthenticated) {
-    
+
     next({ path: '/' });
   } else {
     next();

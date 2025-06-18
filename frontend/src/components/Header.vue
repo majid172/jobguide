@@ -45,7 +45,7 @@ import { useLoginStore } from '@/stores/auth/login';
                   aria-expanded="false">Categories</a>
                 <ul class="dropdown-menu dropdown-menu-dark">
                    <li v-for="item in headerStore.categories">
-                    <router-link to="/" class="dropdown-item">{{ item.name }}</router-link>
+                    <router-link :to="{ name: 'subcategories', params: { id: item.id } }" class="dropdown-item">{{ item.name }}</router-link>
                   </li>
 
 
@@ -286,7 +286,7 @@ import { useLoginStore } from '@/stores/auth/login';
                   </ul>
                 </li>
               </template>
-              
+
             </ul>
 
           </div>

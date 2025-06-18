@@ -34,10 +34,11 @@ Route::prefix('v1')->group(function () {
 
         Route::middleware(['auth:sanctum'])->group(function () {
             Route::get('/dashboard',[DashboardController::class,'index']);
+            Route::get('/subcategories/{id}',[DashboardController::class,'subcategory']);
             Route::post('/logout', [AuthController::class, 'logout']);
         });
     });
-    
+
     Route::get('about', [AboutController::class, 'aboutInfo']);
     Route::get('company-info', [CompanyInfoController::class, 'companyInfo']);
     Route::get('categories', [CategoryController::class, 'index']);
@@ -47,5 +48,5 @@ Route::prefix('v1')->group(function () {
     Route::get('notice', [NoticeController::class, 'notice']);
     Route::get('privacy-policy', [PrivacyController::class, 'privacy']);
 
-    
+
 });
