@@ -45,7 +45,7 @@ export const useLoginStore = defineStore('loginStore', () => {
             axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
         }
 
-        isInitialized.value = true // ✅ Mark done
+        isInitialized.value = true 
     }
 
     function logout() {

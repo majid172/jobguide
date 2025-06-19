@@ -1,4 +1,9 @@
-<script setup></script>
+<script setup>
+import Card from '@/components/Card.vue';    
+</script>
 <template>
-dfsaf
+<Card>
+    
+</Card>
+
 </template>

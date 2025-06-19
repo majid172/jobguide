@@ -35,6 +35,8 @@ Route::prefix('v1')->group(function () {
         Route::middleware(['auth:sanctum'])->group(function () {
             Route::get('/dashboard',[DashboardController::class,'index']);
             Route::get('/subcategories/{id}',[DashboardController::class,'subcategory']);
+            Route::get('/subcategory-to-subjects/{sub_cat_id}',[DashboardController::class,'subjects']);
+            Route::get('/subject-to-exams/{subject_id}',[DashboardController::class,'exams']);
             Route::post('/logout', [AuthController::class, 'logout']);
         });
     });

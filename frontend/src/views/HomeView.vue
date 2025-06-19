@@ -14,7 +14,7 @@ import Choose from '@/components/Choose.vue';
     <Feature/>
     <About/>
     <Choose/>
-    <Instructor/>
+    <!-- <Instructor/> -->
 
     <!-- <TheWelcome /> -->
   </main>

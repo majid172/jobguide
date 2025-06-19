@@ -17,20 +17,28 @@ onMounted(() => {
 </script>
 <template>
   <Card>
-    <template #heading> Sub-Category</template>
+    <template #heading> Sub-Category of {{ subCategoryStore.category.name }}</template>
 
-    <div class="text-center col-lg-4 col-md-6 mb-4" v-for="subcategory in subCategoryStore.subCategory" :key="subcategory.id">
+    <div v-if="subCategoryStore.subCategory.length > 0" class="text-center col-lg-4 col-md-6 mb-4"
+      v-for="subcategory in subCategoryStore.subCategory" :key="subcategory.id">
       <div class="d-flex align-items-center p-4 rounded" style="background-color: #1e293b; color: #f1f5f9;">
-        <img :src="`/src/assets/${subcategory.image}`" class="rounded-circle me-3" alt="Category Image" width="50" height="50" />
+        <img :src="`/src/assets/${subcategory.image}`" class="rounded-circle me-3" alt="Category Image" width="50"
+          height="50" />
         <div class="text-start">
-          <router-link :to="{ name: 'subcategories', params: { id: subcategory.id } }" class="text-decoration-none">
+          <router-link :to="{ name: 'subcategoryToSubjects', params: { id: subcategory.id } }"
+            class="text-decoration-none">
             <h5 class="mb-1 fw-semibold text-light">{{ subcategory.name }}</h5>
             <p class="mb-0 text-muted">
-              <i class="bi bi-tags"></i> {{ subcategory.subjects.length }} Sub-Category
+              <i class="bi bi-tags"></i> {{ subcategory.subjects.length }} Subjects
             </p>
           </router-link>
         </div>
       </div>
     </div>
+
+    <div v-else class="text-center col-lg-4 col-md-6 mb-4">
+      <Empty />
+    </div>
+    
   </Card>
 </template>

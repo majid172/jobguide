@@ -134,13 +134,9 @@ import { useLoginStore } from '@/stores/auth/login';
                                 </div>
 
                               </div>
-                              <label class="py-3">
-                                <input type="checkbox" required="" class="d-inline">
-                                <span class="label-body text-black">Remember Me</span>
-                              </label>
+                             
                               <div class="d-grid my-3">
-                                <button class="btn btn-primary btn-lg btn-dark text-uppercase btn-rounded-none fs-6">Log
-                                  In</button>
+                                <button class="btn btn-primary btn-lg btn-dark text-uppercase btn-rounded-none fs-6">Log In</button>
                               </div>
                             </form>
                           </div>
@@ -161,7 +157,7 @@ import { useLoginStore } from '@/stores/auth/login';
                                   class="form-control ps-3" aria-describedby="passwordHelpBlock">
                               </div>
                               <label class="py-3">
-                                <input type="checkbox" required="" class="d-inline">
+                                <!-- <input type="checkbox" required="" class="d-inline"> -->
                                 <span class="label-body text-black">I agree to the <a href="#"
                                     class="text-black password border-bottom">Privacy Policy</a>
                                 </span>
@@ -282,7 +278,7 @@ import { useLoginStore } from '@/stores/auth/login';
                   </a>
                   <ul class="dropdown-menu dropdown-menu-dark">
                     <li><router-link to="/dashboard" class="dropdown-item">Dashboard</router-link></li>
-                    <li><a href="#" class="dropdown-item" @click="loginStore.logout">Logout</a></li>
+                    <li><a href="javascript:void(0)" class="dropdown-item" @click="loginStore.logout">Logout</a></li>
                   </ul>
                 </li>
               </template>

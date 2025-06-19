@@ -11,6 +11,7 @@ class CategoryController extends Controller
 {
     public function index()
     {
+        
         // $categories = DB::table('categories')
         //                 ->where('categories.active', 1)
         //                 ->join('sub_categories', 'sub_categories.cat_id', '=', 'categories.id')

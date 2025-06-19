@@ -3,7 +3,7 @@
   <section id="about-us" class="my-5">
     <div class="container">
       <div class="row py-lg-5">
-        <h2 class="text-capitalize text-start m-0 py-lg-5"><slot name="heading">Default Heading</slot></h2>
+        <h4 class="text-capitalize text-start m-0 py-lg-5"><slot name="heading">Default Heading</slot></h4>
 
         <!-- Card 1 -->
         <slot/>

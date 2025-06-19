@@ -8,6 +8,7 @@ import TermsConditionView from '@/views/TermsConditionView.vue';
 import MissionView from '@/views/MissionView.vue';
 import DashboardView from '@/views/users/DashboardView.vue';
 import SubCategoryView from '@/views/users/SubCategoryView.vue';
+import SubjectView from '@/views/users/SubjectView.vue';
 import ExamView from '@/views/users/ExamView.vue';
 
 const router = createRouter({
@@ -68,6 +69,12 @@ const router = createRouter({
       path: "/subcategories/:id",
       name: "subcategories",
       component: SubCategoryView,
+      meta: { requiresAuth: true },
+    },
+    {
+      path: "/subcategory-to-subjects/:id",
+      name: "subcategoryToSubjects",
+      component: SubjectView,
       meta: { requiresAuth: true },
     },
     {
