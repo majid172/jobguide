@@ -21,7 +21,7 @@ onMounted(()=>{
                 <img :src="`/src/assets/images/${subject.image}`" class="rounded-circle me-3" :alt="subject.name"
                     width="50" height="50" />
                 <div class="text-start">
-                    <router-link :to="{ name: 'subcategoryToSubjects', params: { id: subject.id } }"
+                    <router-link :to="{ name: 'subjectToExams', params: { id: subject.id } }"
                         class="text-decoration-none">
                         <h5 class="mb-1 fw-semibold text-light">{{ subject.name }}</h5>
                         <p class="mb-0 text-muted">

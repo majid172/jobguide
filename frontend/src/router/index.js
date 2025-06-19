@@ -78,8 +78,8 @@ const router = createRouter({
       meta: { requiresAuth: true },
     },
     {
-      path: "/exams",
-      name: "exams",
+      path: "/subject-to-exams/:id",
+      name: "subjectToExams",
       component: ExamView,
       meta: { requiresAuth: true },
     },

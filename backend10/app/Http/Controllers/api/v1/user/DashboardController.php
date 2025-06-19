@@ -18,16 +18,16 @@ class DashboardController extends Controller
     public function subcategory($id)
     {
         $category = Category::findOrFail($id);
-        $subcategory = SubCategory::where('cat_id',$id)->with('subjects')->get();
+        $subcategory = SubCategory::where('cat_id', $id)->with('subjects')->get();
         return response()->json([
             'category' => $category,
             'subcategory' => $subcategory
-        ]) ;
+        ]);
     }
     public function subjects($sub_cat_id)
     {
         $subcategory = SubCategory::find($sub_cat_id);
-        $subjects = Subject::where('sub_cat_id',$sub_cat_id)->with('exams')->get();
+        $subjects = Subject::where('sub_cat_id', $sub_cat_id)->with('exams')->get();
         return response()->json([
             'subcategory' => $subcategory,
             'subjects' => $subjects,
@@ -35,11 +35,18 @@ class DashboardController extends Controller
     }
     public function exams($subject_id)
     {
-        $subject = Subject::find($subject_id);
-        $exams = Exam::where('subject_id',$subject_id)->get();
+
+        $subject = Subject::where('id', $subject_id)->with('subcategory.category')
+            ->whereHas('subcategory', function ($q) {
+                $q->where('active', 1);
+            })
+            ->first();
+        $mcqexams = Exam::where('subject_id', $subject_id)->where('mcq_written','mcq')->get();
+        $writtenexams = Exam::where('subject_id', $subject_id)->where('mcq_written','written')->get();
         return response()->json([
-            'subject'=> $subject,
-            'exams' => $exams
+            'subject' => $subject,
+            'mcqexams' => $mcqexams,
+            'writtenexams' => $writtenexams
         ]);
     }
 }
