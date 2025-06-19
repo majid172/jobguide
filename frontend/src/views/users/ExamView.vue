@@ -109,7 +109,8 @@ onMounted(() => {
                 <div class="text-start">
                     <h6 class="mb-4">Written Exams</h6>
 
-                    <div v-if="examStore.writtenexams.length>0" class="row my-2" v-for="writtenexam in examStore.writtenexams">
+                    <div v-if="examStore.writtenexams.length > 0" class="row my-2"
+                        v-for="writtenexam in examStore.writtenexams">
                         <div class="col-lg-6">
                             <div class=" border border-info p-2 rounded">
                                 {{ writtenexam.exam_name }}
@@ -137,10 +138,10 @@ onMounted(() => {
                         </div>
 
                     </div>
-                     <div v-else class="text-center col-lg-4 col-md-6 mb-4">
-            <Empty />
-        </div>
-                   
+                    <div v-else class="text-center col-lg-4 col-md-6 mb-4">
+                        <Empty />
+                    </div>
+
                 </div>
             </div>
         </div>
