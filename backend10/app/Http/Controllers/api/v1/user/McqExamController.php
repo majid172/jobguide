@@ -12,7 +12,6 @@ class McqExamController extends Controller
     public function index($id)
     {
         $userID = Cookie::get('user_id');
-        // Get exam and related category info
         $examInfo = DB::table('exams')
             ->join('categories', 'exams.catID', '=', 'categories.id')
             ->select(
@@ -26,7 +25,6 @@ class McqExamController extends Controller
             ->where('exams.active', 1)
             ->first();
 
-        // If exam not found or inactive
         if (!$examInfo) {
             return response()->json([
                 'status' => false,
@@ -34,14 +32,11 @@ class McqExamController extends Controller
             ], 404);
         }
 
-        // Fetch questions
         $questions = DB::table('mcq_questions')->where('examID', $examInfo->exam_id)->get();
-
-        // Fetch order info (note: checking using category ID due to your comment)
         $ordersInfo = DB::table('orders')
-            ->where('userID', $userID)
-            ->where('examID', $examInfo->catID) // category ID used as examID reference
-            ->first();
+                        ->where('userID', $userID)
+                        ->where('examID', $examInfo->catID)
+                        ->first();
 
         // Free exam: allow access directly
         if ($examInfo->cat_free_paid === 'free') {

@@ -69,7 +69,8 @@ onMounted(() => {
                     <div class="row my-2" v-if="examStore.mcqexams.length > 0" v-for="mcqexam in examStore.mcqexams">
                         <div class="col-lg-6">
                             <div class=" border border-info p-2 rounded">
-                                <router-link :to="`/start-mcq-exam/${mcqexam.id}`">{{ mcqexam.exam_name }}</router-link>
+
+                                <router-link :to="`/start-mcq-exam/${mcqexam.id}`" >{{ mcqexam.exam_name }}</router-link>
                                 
                             </div>
                         </div>

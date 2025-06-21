@@ -41,7 +41,7 @@ class DashboardController extends Controller
                 $q->where('active', 1);
             })
             ->first();
-        $mcqexams = Exam::where('subject_id', $subject_id)->where('mcq_written','mcq')->get();
+        $mcqexams = Exam::where('subject_id', $subject_id)->where('mcq_written','mcq')->with('subject.subcategory.category')->where('active',1)->get();
         $writtenexams = Exam::where('subject_id', $subject_id)->where('mcq_written','written')->get();
         return response()->json([
             'subject' => $subject,
