@@ -28,7 +28,7 @@ watchEffect(() => {
     <Card>
         
         <template #heading>MCQ</template>
-        <div v-if="mcqStore.mcqExam.status === false">
+        <div v-if="mcqStore.mcqExam.status === false || mcqStore.mcqExam.access === 'denied'" >
 
         
         <div class="space-y-6 p-4" >
