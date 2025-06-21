@@ -1,5 +1,6 @@
 <script setup>
 import Card from '@/components/Card.vue';
+import Empty from '@/components/Empty.vue';
 import { useExamStore } from '@/stores/Exams';
 import { onMounted } from 'vue';
 import { useRoute } from 'vue-router';
@@ -46,7 +47,7 @@ onMounted(() => {
 
                     <!-- Enroll Button -->
                     <div v-if="examStore.subject.subcategory.category.free_paid === 'paid'">
-                        <router-link to="#"
+                        <router-link to="javascript:void(0)"
                             class="btn btn-outline-primary btn-sm rounded-pill px-4 py-2 fw-semibold shadow-sm">
                             Enroll Category
                         </router-link>
@@ -55,8 +56,8 @@ onMounted(() => {
             </div>
         </div>
 
-        <div v-else class="text-center col-lg-4 col-md-6 mb-4">
-            <Empty />
+        <div v-else class="text-center mb-4">
+            
         </div>
 
         <div class="text-center col-lg-12 col-md-6 mb-4">
@@ -65,33 +66,42 @@ onMounted(() => {
                 <div class="text-start">
                     <h6 class="mb-4">MCQ Exams</h6>
 
-                    <div class="row my-2" v-if="examStore.mcqexams" v-for="mcqexam in examStore.mcqexams">
+                    <div class="row my-2" v-if="examStore.mcqexams.length > 0" v-for="mcqexam in examStore.mcqexams">
                         <div class="col-lg-6">
                             <div class=" border border-info p-2 rounded">
-                                {{ mcqexam.exam_name }}
+                                <router-link :to="`/start-mcq-exam/${mcqexam.id}`">{{ mcqexam.exam_name }}</router-link>
+                                
                             </div>
-
                         </div>
                         <div class="col-lg-6">
                             <div class="row">
                                 <div class="col-4">
                                     <div class="border border-primary p-2 rounded text-center">
-                                        Exam
+                                        <router-link to="javascript:void(0)" class="">
+                                            Exam
+                                        </router-link>
                                     </div>
                                 </div>
                                 <div class="col-4">
                                     <div class="border border-warning p-2 rounded text-center">
-                                        Practice
+                                        <router-link to="javascript:void(0)" class="">
+                                            Practice
+                                        </router-link>
                                     </div>
                                 </div>
                                 <div class="col-4">
                                     <div class="border border-danger p-2 rounded text-center">
-                                        Read
+                                        <router-link to="javascript:void(0)" class="">
+                                            Read
+                                        </router-link>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
+                    </div>
+                    <div v-else class="text-center mb-4">
+                        <p>No exams found</p>
                     </div>
                     <!-- <router-link :to="{ name: 'subjectToExams', params: { id: exam.id } }"
                         class="text-decoration-none">
@@ -113,7 +123,8 @@ onMounted(() => {
                         v-for="writtenexam in examStore.writtenexams">
                         <div class="col-lg-6">
                             <div class=" border border-info p-2 rounded">
-                                {{ writtenexam.exam_name }}
+                                <router-link :to="`/start-mcq-exam/${writtenexam.id}`">{{ writtenexam.exam_name }}</router-link>
+                                
                             </div>
 
                         </div>
@@ -138,8 +149,8 @@ onMounted(() => {
                         </div>
 
                     </div>
-                    <div v-else class="text-center col-lg-4 col-md-6 mb-4">
-                        <Empty />
+                    <div v-else class="text-center mb-4">
+                        <p>No exams found</p>
                     </div>
 
                 </div>

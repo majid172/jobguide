@@ -10,6 +10,7 @@ import DashboardView from '@/views/users/DashboardView.vue';
 import SubCategoryView from '@/views/users/SubCategoryView.vue';
 import SubjectView from '@/views/users/SubjectView.vue';
 import ExamView from '@/views/users/ExamView.vue';
+import McqExamView from '@/views/users/McqExamView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -81,6 +82,12 @@ const router = createRouter({
       path: "/subject-to-exams/:id",
       name: "subjectToExams",
       component: ExamView,
+      meta: { requiresAuth: true },
+    },
+    {
+      path: "/start-mcq-exam/:id",
+      name: "startMcqExam",
+      component: McqExamView,
       meta: { requiresAuth: true },
     },
   ],

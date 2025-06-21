@@ -10,6 +10,7 @@ use App\Http\Controllers\api\v1\NoticeController;
 use App\Http\Controllers\api\v1\PrivacyController;
 use App\Http\Controllers\api\v1\TeacherController;
 use App\Http\Controllers\api\v1\user\DashboardController;
+use App\Http\Controllers\api\v1\user\McqExamController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -37,6 +38,7 @@ Route::prefix('v1')->group(function () {
             Route::get('/subcategories/{id}',[DashboardController::class,'subcategory']);
             Route::get('/subcategory-to-subjects/{sub_cat_id}',[DashboardController::class,'subjects']);
             Route::get('/subject-to-exams/{subject_id}',[DashboardController::class,'exams']);
+            Route::get('/start-mcq-exam/{id}',[McqExamController::class,'index']);
             Route::post('/logout', [AuthController::class, 'logout']);
         });
     });
